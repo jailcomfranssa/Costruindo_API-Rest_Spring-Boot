@@ -3,11 +3,25 @@ package br.com.alura.forun.controller.requestBody;
 import br.com.alura.forun.model.Curso;
 import br.com.alura.forun.model.Topico;
 import br.com.alura.forun.repository.CursoRepository;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class TopicoRequestBody {
-
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String titulo;
+
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String mensagem;
+
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String nomeCurso;
 
     public String getTitulo() {
