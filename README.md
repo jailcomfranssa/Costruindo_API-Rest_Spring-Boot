@@ -1,4 +1,4 @@
-# Spring-Boot-BACKEND
+# Spring-Boot-BACK_END
 
 <div align="center">
   <img height="180em" src="https://www.alura.com.br/assets/api/share/categoria-programacao.png"/>
