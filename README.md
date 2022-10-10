@@ -1,7 +1,7 @@
 # Spring-Boot-BACKEND
 
 <div align="center">
-  <img height="180em" src="https://miro.medium.com/max/875/1*lhOax3cZATGZwEhG0uTYRA.gif"/>
+  <img height="180em" src="https://www.alura.com.br/assets/api/share/categoria-programacao.png"/>
   <img height="180em" src="https://4.bp.blogspot.com/-_Y5isR6OG70/VqM4VBtwx7I/AAAAAAAACdg/esBExhpDP1c/s1600/java8_splash.gif"/>
 </div>
 
