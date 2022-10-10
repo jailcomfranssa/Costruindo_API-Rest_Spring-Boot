@@ -21,6 +21,7 @@ public class Topico {
     @ManyToOne
     private Usuario autor;
 
+
     @ManyToOne
     private Curso curso;
 
