@@ -4,9 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-@Entity
-public class Topico {
 
+public class Topico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,26 +20,11 @@ public class Topico {
     @ManyToOne
     private Usuario autor;
 
-
     @ManyToOne
     private Curso curso;
 
     @OneToMany(mappedBy = "topico")
     private List<Resposta> respostas = new ArrayList<>();
-
-    public Topico(Long id, String titulo, String mensagem, LocalDateTime dataCriacao, StatusTopico status, Usuario autor, Curso curso, List<Resposta> respostas) {
-        this.id = id;
-        this.titulo = titulo;
-        this.mensagem = mensagem;
-        this.dataCriacao = dataCriacao;
-        this.status = status;
-        this.autor = autor;
-        this.curso = curso;
-        this.respostas = respostas;
-    }
-
-    public Topico() {
-    }
 
     public Topico(String titulo, String mensagem, Curso curso) {
         this.titulo = titulo;
@@ -136,5 +120,4 @@ public class Topico {
     public void setRespostas(List<Resposta> respostas) {
         this.respostas = respostas;
     }
-
 }

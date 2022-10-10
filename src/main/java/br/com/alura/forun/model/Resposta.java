@@ -1,8 +1,11 @@
 package br.com.alura.forun.model;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
-@Entity
+
 public class Resposta {
 
     @Id
@@ -24,17 +27,6 @@ public class Resposta {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
-    }
-
-    public Resposta() {
-    }
-
-    public Resposta(String mensagem, Topico topico, LocalDateTime dataCriacao, Usuario autor, Boolean solucao) {
-        this.mensagem = mensagem;
-        this.topico = topico;
-        this.dataCriacao = dataCriacao;
-        this.autor = autor;
-        this.solucao = solucao;
     }
 
     @Override
@@ -101,6 +93,5 @@ public class Resposta {
     public void setSolucao(Boolean solucao) {
         this.solucao = solucao;
     }
-
 
 }
