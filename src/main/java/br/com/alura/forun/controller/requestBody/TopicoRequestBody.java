@@ -18,11 +18,11 @@ public class TopicoRequestBody {
         this.titulo = titulo;
     }
 
-    public String getMensagens() {
+    public String getMensagem() {
         return mensagem;
     }
 
-    public void setMensagens(String mensagem) {
+    public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
 

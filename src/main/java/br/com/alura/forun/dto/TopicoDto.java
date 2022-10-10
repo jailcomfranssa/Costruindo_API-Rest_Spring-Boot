@@ -11,17 +11,15 @@ public class TopicoDto {
     private Long id;
     private String titulo;
     private String mensagem;
-    private LocalDateTime dataCriação;
-
-
+    private LocalDateTime dataCriacao;
 
     public TopicoDto(Topico topico) {
-
         this.id = topico.getId();
         this.titulo = topico.getTitulo();
         this.mensagem = topico.getMensagem();
-        this.dataCriação = topico.getDataCriacao();
+        this.dataCriacao = topico.getDataCriacao();
     }
+
     public Long getId() {
         return id;
     }
@@ -31,13 +29,13 @@ public class TopicoDto {
     public String getMensagem() {
         return mensagem;
     }
-    public LocalDateTime getDataCriação() {
-        return dataCriação;
-    }
-    public static List<TopicoDto> converter(List<Topico> topicos) {
 
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public static List<TopicoDto> converter(List<Topico> topicos) {
         return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
     }
-
 
 }
