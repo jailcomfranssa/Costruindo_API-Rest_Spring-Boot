@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,9 +38,11 @@ public class TopicosController {
 
     @GetMapping
     public ResponseEntity<Page<TopicoDto>> listaTodos(@RequestParam(required = false) String nomeCurso,
-                                                      @RequestParam int pagina, @RequestParam int quantidade,
-                                                      @RequestParam(required = false) String ordenacao ) {
-        Pageable pageable = PageRequest.of(pagina,quantidade, Sort.Direction.ASC, ordenacao);
+                                                      @PageableDefault(page = 0, size = 10) Pageable pageable){
+//    public ResponseEntity<Page<TopicoDto>> listaTodos(@RequestParam(required = false) String nomeCurso,
+//                                                      @RequestParam int pagina, @RequestParam int quantidade,
+//                                                      @RequestParam(required = false) String ordenacao ) {
+        //Pageable pageable = PageRequest.of(pagina,quantidade, Sort.Direction.ASC, ordenacao);
         Page<Topico> topicos;
         if (nomeCurso == null) {
             topicos = topicosRepository.findAll(pageable);
