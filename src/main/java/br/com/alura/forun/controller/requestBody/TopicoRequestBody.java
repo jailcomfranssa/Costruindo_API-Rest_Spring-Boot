@@ -20,7 +20,7 @@ public class TopicoRequestBody {
 
     @NotNull
     @NotEmpty
-    @Min(5) @Max(100)
+    @Size(min = 5)
     private String nomeCurso;
 
     public String getTitulo() {
