@@ -5,23 +5,22 @@ import br.com.alura.forun.model.Topico;
 import br.com.alura.forun.repository.CursoRepository;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class TopicoRequestBody {
     @NotNull
     @NotEmpty
-    @Length(min = 5)
+    @Size(min = 5)
     private String titulo;
 
     @NotNull
     @NotEmpty
-    @Length(min = 5)
+    @Size(min = 5)
     private String mensagem;
 
     @NotNull
     @NotEmpty
-    @Length(min = 5)
+    @Min(5) @Max(100)
     private String nomeCurso;
 
     public String getTitulo() {
