@@ -1,4 +1,4 @@
-package br.com.alura.forun.dto;
+package br.com.alura.forun.controller.dto;
 
 import br.com.alura.forun.model.StatusTopico;
 import br.com.alura.forun.model.Topico;

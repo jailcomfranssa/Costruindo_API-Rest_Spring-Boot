@@ -1,6 +1,6 @@
 package br.com.alura.forun.config.validacao;
 
-import br.com.alura.forun.dto.ErroHandlerDto;
+import br.com.alura.forun.controller.dto.ErroHandlerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

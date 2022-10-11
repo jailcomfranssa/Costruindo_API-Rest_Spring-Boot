@@ -1,4 +1,4 @@
-package br.com.alura.forun.dto;
+package br.com.alura.forun.controller.dto;
 
 public class ErroHandlerDto {
     private String campo;
