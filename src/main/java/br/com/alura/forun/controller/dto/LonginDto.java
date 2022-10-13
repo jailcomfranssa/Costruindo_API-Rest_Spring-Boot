@@ -1,5 +1,7 @@
 package br.com.alura.forun.controller.dto;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 public class LonginDto {
 
     private String email;
@@ -19,5 +21,9 @@ public class LonginDto {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public UsernamePasswordAuthenticationToken converter() {
+        return new UsernamePasswordAuthenticationToken(email, senha);
     }
 }

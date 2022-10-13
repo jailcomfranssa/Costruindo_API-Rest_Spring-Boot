@@ -1,7 +1,14 @@
 package br.com.alura.forun.controller;
 
+import br.com.alura.forun.config.security.TokenService;
 import br.com.alura.forun.controller.dto.LonginDto;
+import br.com.alura.forun.model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -10,12 +17,30 @@ import javax.validation.Valid;
 @RequestMapping("/auth")
 public class AutenticacaoController {
 
-    @PostMapping
-    public ResponseEntity<?> autenticar(@RequestBody @Valid LonginDto longinDto){
-        System.out.println("E-mail: "+longinDto.getEmail());
-        System.out.println("Senha: "+longinDto.getSenha());
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-        return ResponseEntity.ok().build();
+    @Autowired
+    private TokenService tokenService;
+
+    Usuario usuario = new Usuario();
+
+    @PostMapping
+    public ResponseEntity<?> autenticar(@RequestBody @Valid LonginDto longinDto) {
+        UsernamePasswordAuthenticationToken dadosLogin = longinDto.converter();
+
+        try {
+            Authentication authenticate = authenticationManager.authenticate(dadosLogin);
+            String token = tokenService.gerarToken(authenticate, longinDto.getEmail());
+            System.out.println(token);
+            return ResponseEntity.ok().build();
+
+        } catch (AuthenticationException e) {
+            return ResponseEntity.badRequest().build();
+
+        }
+
 
     }
+
 }
