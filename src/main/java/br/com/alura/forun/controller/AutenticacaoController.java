@@ -2,6 +2,7 @@ package br.com.alura.forun.controller;
 
 import br.com.alura.forun.config.security.TokenService;
 import br.com.alura.forun.controller.dto.LonginDto;
+import br.com.alura.forun.controller.dto.TokenDto;
 import br.com.alura.forun.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,14 +27,14 @@ public class AutenticacaoController {
     Usuario usuario = new Usuario();
 
     @PostMapping
-    public ResponseEntity<?> autenticar(@RequestBody @Valid LonginDto longinDto) {
+    public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LonginDto longinDto) {
         UsernamePasswordAuthenticationToken dadosLogin = longinDto.converter();
 
         try {
             Authentication authenticate = authenticationManager.authenticate(dadosLogin);
             String token = tokenService.gerarToken(authenticate, longinDto.getEmail());
-            System.out.println(token);
-            return ResponseEntity.ok().build();
+
+            return ResponseEntity.ok(new TokenDto(token,"Bearer"));
 
         } catch (AuthenticationException e) {
             return ResponseEntity.badRequest().build();
