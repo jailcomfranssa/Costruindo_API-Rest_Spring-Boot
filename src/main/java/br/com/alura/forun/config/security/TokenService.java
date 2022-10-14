@@ -30,4 +30,13 @@ public class TokenService {
                 .signWith(SignatureAlgorithm.HS256,secret)
                 .compact();
     }
+
+    public boolean isTokenValido(String toke) {
+        try {
+            Jwts.parser().setSigningKey(this.secret).parseClaimsJws(toke);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }
