@@ -1,5 +1,6 @@
 package br.com.alura.forun.config.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,5 +39,11 @@ public class TokenService {
         }catch (Exception e){
             return false;
         }
+    }
+
+    public String getEmail(String toke) {
+        Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(toke).getBody();
+
+        return claims.getSubject();
     }
 }

@@ -1,5 +1,6 @@
 package br.com.alura.forun.config.security;
 
+import br.com.alura.forun.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @Override
     @Bean
     protected AuthenticationManager authenticationManager()throws Exception{
@@ -47,7 +51,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilterBefore(new AutenticacaoViaTokenFilter(tokenService), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
     //Configuração de recurso statics(js, css, imagens, etc)
